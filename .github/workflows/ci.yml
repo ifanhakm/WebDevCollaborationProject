@@ -1,0 +1,34 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14' # Sesuaikan dengan versi Node.js yang digunakan
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Lint the code
+      run: npm run lint # Sesuaikan dengan perintah lint yang digunakan
+
+    - name: Run tests
+      run: npm test # Sesuaikan dengan perintah test yang digunakan
+
+    - name: Build the project
+      run: npm run build # Sesuaikan dengan perintah build yang digunakan
